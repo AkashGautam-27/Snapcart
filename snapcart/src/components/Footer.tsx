@@ -29,9 +29,9 @@ function Footer() {
       <div>
         <h2 className='text-xl font-semibold mb-3'>Quick Links</h2>
         <ul className='space-y-2 text-green-100 text-sm'>
-            <li><Link className='hover:text-white hover:font-bold transition' href={"/"}>Home</Link></li>
-            <li><Link className='hover:text-white hover:font-bold transition' href={"/cart"}>Cart</Link></li>
-            <li><Link className='hover:text-white hover:font-bold transition' href={"my-orders"}>Orders</Link></li>
+            <li><Link className='hover:text-white hover:font-bold transition' href="/">Home</Link></li>
+            <li><Link className='hover:text-white hover:font-bold transition' href="/user/cart">Cart</Link></li>
+            <li><Link className='hover:text-white hover:font-bold transition' href="/user/my-orders">Orders</Link></li>
         </ul>
       </div>
       <div>
@@ -48,16 +48,16 @@ function Footer() {
             </li>
         </ul>
         <div className='flex gap-4 mt-4'>
-            <Link href="https:facebook.com" target="_blank">
+            <Link href="https://facebook.com" target="_blank">
             <FaFacebook className='w-5 h-5 hover:text-white transition'/>
             </Link>
-             <Link href="https:facebook.com" target="_blank">
+             <Link href="https://instagram.com" target="_blank">
             <FaInstagram className='w-5 h-5 hover:text-white transition'/>
             </Link>
-             <Link href="https:facebook.com" target="_blank">
+             <Link href="https://twitter.com" target="_blank">
             <FaTwitter className='w-5 h-5 hover:text-white transition'/>
             </Link>
-             <Link href="https:facebook.com" target="_blank">
+             <Link href="https://wa.me/916263331073" target="_blank">
             <FaWhatsapp className='w-5 h-5 hover:text-white transition'/>
             </Link>
 
