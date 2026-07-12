@@ -1,11 +1,11 @@
 'use client'
+import dynamic from 'next/dynamic'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { IDeliveryAssignment } from '../models/deliveryAssignment.model'
 import { getSocket } from '../lib/socket'
 import { useSelector } from 'react-redux'
 import { RootState } from '../redux/store'
-import dynamic from 'next/dynamic'
 import { Loader } from 'lucide-react'
 import { div } from 'motion/react-client'
 import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
@@ -13,12 +13,14 @@ interface ILocation{
   latitude:number,
   longitude:number
 }
-function DeliveryBoyDashboard({earning}:{earning:number}) {
 
 const LiveMap=dynamic(()=>
   import ('./LiveMap'),{
     ssr:false,
 })
+function DeliveryBoyDashboard({earning}:{earning:number}) {
+
+
 
 
   const [assignments, setAssignments] = useState<any[]>([])
@@ -152,7 +154,7 @@ window.location.reload()
     ]
     return(
       <div className='flex items-center justify-center min-h-screen bg-linear-to-br from-white to-green-50 p-6'>
-        <div className='max-w-md w-full text-center'>
+        <div className='max-w-md w-full pt-30 text-center'>
         <h2 className='text-2xl font-bold text-gray-800'>No Active Deliveries... 🚛</h2>
         <p className='text-gray-500 mb-5'>Stay Online to receive New Order</p>
         <div className='bg-white rounded-xl border shadow-xl p-6'>
@@ -192,13 +194,13 @@ window.location.reload()
 <div className='mt-6 bg-white rounded-xl border shadow p-6'>
   {!activeOrder.order.deliveryOtpVerification && !showOtpBox && (
    <button 
-   onClick={sendOtp} className='w-full text-center py-4 bg-green-600 text-white rounded-lg'>{sendOtpLoading?<Loader className='text-white text-center animate-spin' size={18}/>:" Mark as Delivered"}</button>
+   onClick={sendOtp} className='w-full text-center py-4 bg-green-600 text-white rounded-lg flex items-center justify-center'>{sendOtpLoading?<Loader className='text-white text-center animate-spin' size={18}/>:" Mark as Delivered"}</button>
   )} 
   {
     showOtpBox && 
     <div className='mt-4'>
       <input type="text" placeholder='Enter OTP' maxLength={4} className='w-full py-3 border rounded-lg text-center' onChange={(e)=>setOtp(e.target.value)}  />
-      <button className='w-full mt-4 bg-blue-600 text-center text-white py-3 rounded-lg' 
+      <button className='w-full mt-4 bg-blue-600 text-center text-white py-3 rounded-lg flex items-center justify-center' 
       onClick={verifyOtp}>{verifyOtpLoading?<Loader className='text-white text-center animate-spin' size={18}/>:" Verify OTP"}</button>
       {otpError && 
       <div className='text-red-600 mt-2'>
