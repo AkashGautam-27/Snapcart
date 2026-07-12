@@ -5,33 +5,20 @@ import { Server } from "socket.io"
 import axios from "axios"
 import { type } from "os"
 
-
-
 dotenv.config()
 const app = express()
 app.use(express.json())
-
 const server = http.createServer(app)
 const port = process.env.PORT || 5000
-
-
-
 const io = new Server(server, {
     cors: {
         origin: process.env.NEXT_BASE_URL
     }
 })
-
-
-
 io.on("connection", (socket) => {
-
     socket.on("identity",async (userId)=>{
-       
         await axios.post(`${process.env.NEXT_BASE_URL}/api/socket/connect`,{userId,socketId:socket.id})
     })
-
-
     socket.on("update-location",async({userId,latitude,longitude})=>{
         const location={
             type:"Point",
@@ -39,10 +26,7 @@ io.on("connection", (socket) => {
         }
            await axios.post(`${process.env.NEXT_BASE_URL}/api/socket/update-location`,{userId,location})
     io.emit("update-deliveryBoy-location",{userId,location})
-
     })
-
-
 
     socket.on("join-room",(roomId)=>{
         console.log("join room with",roomId)

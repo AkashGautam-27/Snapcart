@@ -83,10 +83,12 @@ deliveryBoysPayload = availabelDeliveryBoys.map(b => ({
                 availableBoys:deliveryBoysPayload
             },
             {status:200})
-    } catch (error) {
-        console.log(error)
+    } catch (error:any) {
+        console.error("update status error");
+        console.error(error);
+        console.error(error.stack);
          return NextResponse.json(
-            {message:  `update status error ${error}`},
+            {message:error.message},
             {status:500}
         )
     }
